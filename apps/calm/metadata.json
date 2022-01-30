@@ -1,0 +1,16 @@
+// Create an entry in apps.json as follows:
+{ "id": "calm",
+  "name": "My app's human readable name",
+  "icon": "calm.png",
+  "version":"0.01",
+  "description": "testing calm breathing app for Magic3",
+  "tags": "",
+  "supports":["MAGIC3"]
+  "readme": "README.md",
+  "needsFeatures":["BLE","BLEHID"],
+  "storage": [
+    {"name":"calm.app.js","url":"app.js"}
+    {"name":"calm.img", "url":"app-icon.js", "evaluate":true}
+  ]
+  "data": [{"name":"calm.settings.json", "url":"settings.json"}]
+}
