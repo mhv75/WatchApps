@@ -1,7 +1,7 @@
-# App Name
+# Calm
 
-Describe the app...
+An app aimed at helping you regain calm by guided breathig when feeling stressed or anxious 
 
 ## Usage
 
-Describe how to use it
+Not sure yet
