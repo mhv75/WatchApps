@@ -17,7 +17,7 @@ var colours = {
     yellow: ["#fdff00", "yellow"]
 };
 
-var settings_file = require("Storage").open("breath.settings.json", "r");
+var settings_file = require("Storage").open("calm.settings.json", "r");
 
 var test = settings_file.read(settings_file.getLength());
 
@@ -135,32 +135,6 @@ function update_menu() {
 
 function btn1Pressed() {
     if (status < 6) {
-        status += 1;
-        if (status == 6)
-            status = 0;
-
-        update_menu();
-    }
-    else if (status == 7) {
-        clearTimeout(timeout);
-        clearInterval();
-        status = 0;
-        update_menu();
-    }
-}
-
-function btn2Pressed() {
-    if (status < 6) {
-        settings_file = require("Storage").open("breath.settings.json", "w");
-        settings_file.write(JSON.stringify(settings));
-        Bangle.setHRMPower(1);
-        g.setColor(settings.colour[0]);
-        restart_interval();
-    }
-}
-
-function btn3Pressed() {
-    if (status < 6) {
         if (status == 0) {
             settings.period += 1;
             if (settings.period > 6)
@@ -208,8 +182,7 @@ function btn3Pressed() {
 update_menu();
 
 setWatch(btn1Pressed, BTN1, { repeat: true });
-setWatch(btn2Pressed, BTN2, { repeat: true });
-setWatch(btn3Pressed, BTN3, { repeat: true });
+
 
 Bangle.on('HRM', function (hrm) {
     if (first_signal)
