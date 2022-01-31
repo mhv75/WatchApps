@@ -4,7 +4,7 @@
   </head>
   <body>
 
-    <h4>List of products</h4>
+    <h4>List of tasks</h4>
     <table class="table">
       <thead>
         <tr>
@@ -13,22 +13,22 @@
           <th>actions</th>
         </tr>
       </thead>
-      <tbody id="products">
+      <tbody id="tasks">
 
       </tbody>
     </table>
     <br><br>
-    <h4>Add a new product</h4>
-    <form id="add_product_form">
+    <h4>Add a new task</h4>
+    <form id="add_task_form">
       <div class="columns">
         <div class="column col-4 col-xs-12">
-          <input class="form-input input-sm" type="text" id="add_product_name" placeholder="Name">
+          <input class="form-input input-sm" type="text" id="add_task_name" placeholder="Name">
         </div>
         <div class="column col-4 col-xs-12">
-          <input class="form-input input-sm" value="1" type="number" id="add_product_quantity" placeholder="Quantity">
+          <input class="form-input input-sm" value="1" type="number" id="add_task_quantity" placeholder="Quantity">
         </div>
         <div class="column col-4 col-xs-12">
-          <button id="add_product_button" class="btn btn-primary btn-sm">Add</button>
+          <button id="add_task_button" class="btn btn-primary btn-sm">Add</button>
         </div>
       </div>
     </form>
@@ -39,20 +39,20 @@
 
     <script>
 
-      var products = []
+      var tasks = []
       try{
-        var stored = localStorage.getItem('grocery-product-list')
-        if(stored) products = JSON.parse(stored);
+        var stored = localStorage.getItem('routine-task-list')
+        if(stored) tasks = JSON.parse(stored);
       }catch(e){}
 
-      var $name = document.getElementById('add_product_name')
-      var $form = document.getElementById('add_product_form')
-      var $button = document.getElementById('add_product_button')
-      var $quantity = document.getElementById('add_product_quantity')
-      var $list = document.getElementById('products')
+      var $name = document.getElementById('add_task_name')
+      var $form = document.getElementById('add_task_form')
+      var $button = document.getElementById('add_task_button')
+      var $quantity = document.getElementById('add_task_quantity')
+      var $list = document.getElementById('tasks')
       var $reset = document.getElementById('reset')
 
-      renderProducts()
+      renderTasks()
 
       $reset.addEventListener('click', reset)
 
@@ -64,40 +64,40 @@
 
         var quantity = parseInt($quantity.value)
 
-        products.push({
+        tasks.push({
           name, quantity,
           ok: false
         })
 
-        renderProducts()
+        renderTasks()
         $name.value = ''
         $quantity.value = 1
         save()
       })
 
       function save(){
-        localStorage.setItem('grocery-product-list',JSON.stringify(products));
+        localStorage.setItem('routine-task-list',JSON.stringify(tasks));
       }
 
       function reset(){
-        products = []
+        tasks = []
         save()
-        renderProducts()
+        renderTasks()
       }
 
-      function removeProduct(index){
-        products = products.filter((p,i) => i!==index)
+      function removeTask(index){
+        tasks = tasks.filter((p,i) => i!==index)
         save()
-        renderProducts()
+        renderTasks()
       }
 
-      function renderProducts(){
+      function renderTasks(){
         $list.innerHTML = ''
-        products.forEach((product,index) => {
-          var $product = document.createElement('tr')
+        tasks.forEach((task,index) => {
+          var $task = document.createElement('tr')
 
-          $product.innerHTML = `<td>${product.name}</td><td>${product.quantity}</td><td><button class="btn btn-error" onclick="removeProduct(${index})">remove</button></td>`
-          $list.appendChild($product)
+          $task.innerHTML = `<td>${task.name}</td><td>${task.quantity}</td><td><button class="btn btn-error" onclick="removeProduct(${index})">remove</button></td>`
+          $list.appendChild($task)
         })
 
         $name.focus()
@@ -107,7 +107,7 @@
       document.getElementById("upload").addEventListener("click", function() {
         sendCustomizedApp({
           storage:[
-            { name:"grocery_list.json", content: JSON.stringify({products: products}) }
+            { name:"routine_list.json", content: JSON.stringify({tasks: tasks}) }
           ]
         });
       });
