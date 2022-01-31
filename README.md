@@ -17,7 +17,7 @@ This build has a modified `lcd_spi_unbuf` module that works with SPI FLASH. The 
 
 ________________________________________________________
 
-Once Espruino is installed use the [App Loader](https://jeffmer.github.io/WatchApps/) to load `Bootloader`, `Main`, `Launcher` and `Settings` followed by the apps and widgets you want.
+Once Espruino is installed use the [App Loader](https://mhv75.github.io/WatchApps/) to load `Bootloader`, `Main`, `Launcher` and `Settings` followed by the apps and widgets you want.
 
 These provide a simple Bangle emulation environment which will let you load Bangle Apps from its App Loader. 
 
