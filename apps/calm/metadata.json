@@ -5,7 +5,7 @@
  "description": "A guided breathing app for Magic3",
  "icon": "app.png", 
  "tags": "",
- "supports":["Magic3"],
+ "supports":["Magic3","P8","ROCK","SN80"],
  "readme": "README.md",
  "needsFeatures":["BLE","BLEHID"],
  "storage": [
