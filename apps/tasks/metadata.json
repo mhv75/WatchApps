@@ -1,0 +1,16 @@
+{
+  "id": "tasks",
+  "name": "Tasks",
+  "version": "0.02",
+  "description": "Simple task (routine) list - Display a list of tasks and track if you already did them.",
+  "icon": "tasks.png",
+  "type": "app",
+  "tags": "tool,list",
+  "supports": ["BANGLEJS", "BANGLEJS2", "Magic3"],
+  "custom": "tasks.html",
+  "allow_emulator": true,
+  "storage": [
+    {"name":"tasks.app.js","url":"app.js"},
+    {"name":"tasks.img","url":"tasks-icon.js","evaluate":true}
+  ]
+}
