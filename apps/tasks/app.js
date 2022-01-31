@@ -1,5 +1,5 @@
 var filename = 'tasks.json';
-var settings = require("Storage").readJSON(filename,1)|| { products: [] };
+var settings = require("Storage").readJSON(filename,1)|| { tasks: [] };
 
 function updateSettings() {
   require("Storage").writeJSON(filename, settings);
@@ -11,13 +11,13 @@ function twoChat(n){
   return ''+n;
 }
 
-const mainMenu = settings.products.reduce(function(m, p, i){
+const mainMenu = settings.tasks.reduce(function(m, p, i){
   const name = twoChat(p.quantity)+' '+p.name;
   m[name] = {
     value: p.ok,
     format: v => v?'[x]':'[ ]',
     onchange: v => {
-      settings.products[i].ok = v;
+      settings.tasks[i].ok = v;
       updateSettings();
     }
   };
